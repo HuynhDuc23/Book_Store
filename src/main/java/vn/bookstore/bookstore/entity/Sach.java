@@ -47,17 +47,10 @@ public class Sach {
     )
     private List<HinhAnh> danhSachHinhAnh ;
 
-    @OneToMany(mappedBy = "sach" , fetch = FetchType.LAZY , cascade = {
-            CascadeType.PERSIST , CascadeType.DETACH , CascadeType.MERGE , CascadeType.REFRESH
-    })
+    @OneToMany(mappedBy = "sach" , fetch = FetchType.LAZY , cascade = CascadeType.ALL)
     private List<SuDanhGia> danhSachDanhGia ;
 
-    @OneToMany(mappedBy = "sach" , fetch = FetchType.LAZY , cascade ={
-                 CascadeType.PERSIST ,
-                  CascadeType.DETACH ,
-                  CascadeType.MERGE ,
-                  CascadeType.DETACH
-            })
+    @OneToMany(mappedBy = "sach" , fetch = FetchType.LAZY , cascade =CascadeType.ALL)
     private List<SachYeuThich> danhSachYeuThich ;
 
     @OneToMany(mappedBy = "sach",

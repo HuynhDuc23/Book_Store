@@ -21,12 +21,14 @@ public class DonHang {
     private String diaChiMuaHang ;
     @Column(name = "dia_chi_nhan_hang",length = 512)
     private String diaChiNhanHang ;
+    @Column(name = "tong_tien_san_pham")
+    private double tongTienSanPham ;
     @Column(name = "tong_tien")
     private double tongTien ;
-    @Column(name = "trang_thai_thanh_toan")
-    private String trangThaiThanhToan ;
-    @Column(name = "trang_thai_giao_hang")
-    private String trangThaiGiaoHang ;
+    @Column(name = "chi_phi_giao_hang")
+    private String chiPhiGiaoHang;
+    @Column(name = "chi_phi_thanh_toan")
+    private String chiPhiThanhToan ;
     @ManyToOne(
             fetch = FetchType.LAZY ,
             cascade =  {
@@ -42,14 +44,9 @@ public class DonHang {
 
     @OneToMany(mappedBy = "donHang",
             fetch = FetchType.LAZY,
-            cascade = {
-                 CascadeType.PERSIST,
-                 CascadeType.DETACH,
-                 CascadeType.MERGE,
-                 CascadeType.REFRESH
-            }
+            cascade = CascadeType.ALL
     )
-    private List<ChiTietDonHang> danhSachChiTietDonHang ;
+        private List<ChiTietDonHang> danhSachChiTietDonHang ;
 
     @ManyToOne(
             fetch = FetchType.LAZY, cascade = {
@@ -59,7 +56,7 @@ public class DonHang {
                    CascadeType.MERGE
     }
     )
-    @JoinColumn(name="ma_hinh_thuc_thanh_toan",nullable = false)
+    @JoinColumn(name="ma_hinh_thuc_thanh_toan",nullable = true)
     private HinhThucThanhToan hinhThucThanhToan ;
 
 
@@ -72,7 +69,7 @@ public class DonHang {
                     CascadeType.MERGE
             }
     )
-    @JoinColumn(name = "ma_hinh_thuc_giao_hang",nullable = false)
+    @JoinColumn(name = "ma_hinh_thuc_giao_hang",nullable = true)
     private HinhThucGiaoHang hinhThucGiaoHang ;
 
 

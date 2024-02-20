@@ -15,11 +15,13 @@ public class NguoiDung {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ma_nguoi_dung")
     private int maNguoiDung ;
+    @Column(name = "email")
+    private String email;
     @Column(name = "ho_dem")
     private String hoDem ;
     @Column(name = "ten")
     private String ten ;
-    @Column(name = "teb_dang_nhap")
+    @Column(name = "ten_dang_nhap")
     private String tenDangNhap ;
     @Column(name = "mat_khau",length = 512)
     private String matKhau ;
@@ -44,7 +46,7 @@ public class NguoiDung {
     )
     @JoinTable(
             name="nguoidung_quyen",
-            joinColumns = @JoinColumn(name="nguoi_dung"),
+            joinColumns = @JoinColumn(name="ma_nguoi_dung"),
             inverseJoinColumns = @JoinColumn(name="ma_quyen")
     )
     private List<Quyen> danhSachQuyen ;

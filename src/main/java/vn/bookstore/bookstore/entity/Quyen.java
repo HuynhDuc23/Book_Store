@@ -26,7 +26,7 @@ public class Quyen {
     )
     @JoinTable(
             name = "nguoidung_quyen",
-            joinColumns = @JoinColumn(name="quyen"),
+            joinColumns = @JoinColumn(name="ma_quyen"),
             inverseJoinColumns = @JoinColumn(name = "ma_nguoi_dung")
     )
     private List<NguoiDung> danhSachNguoiDung ;
